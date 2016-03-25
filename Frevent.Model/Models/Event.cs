@@ -12,6 +12,8 @@ namespace Frevent.Model.Models
         public DateTime Start { get; set; }
         public DateTime End { get; set; }
         public string Name { get; set; }
+
+        public int PlaceID { get; set; }
         public Place Place { get; set; }
     }
 }
