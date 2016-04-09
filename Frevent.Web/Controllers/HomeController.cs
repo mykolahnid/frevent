@@ -32,5 +32,16 @@ namespace Frevent.Web.Controllers
             viewModelEvents = Mapper.Map<IEnumerable<Event>, IEnumerable<EventViewModel>>(events);
             return View(viewModelEvents);
         }
+
+        [HttpPost]
+        public ActionResult Create(EventFormViewModel newEvent)
+        {            
+            var anEvent = Mapper.Map<EventFormViewModel, Event>(newEvent);
+
+            eventService.CreateEvent(anEvent);
+            eventService.SaveEvent();
+
+            return RedirectToAction("Index");
+        }
     }
 }

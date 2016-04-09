@@ -30,7 +30,7 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
+    @foreach (var item in Model) {
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.EventID)
@@ -56,3 +56,23 @@
 }
 
 </table>
+
+<div class="panel-footer">
+    @using (Html.BeginForm("Create", "Home", FormMethod.Post,
+        new {enctype = "multipart/form-data", @class = "form-inline"}))
+    {
+        <div class="form-group">
+            <label class="sr-only" for="eventStart">Start</label>            
+            <input type="datetime-local" class="form-control" name="eventStart" placeholder="Start">
+        </div>
+        <div class="form-group">
+            <label class="sr-only" for="eventEnd">End</label>
+            <input type="datetime-local" class="form-control" name="eventEnd" placeholder="End">
+        </div>
+        <div class="form-group">
+            <label class="sr-only" for="eventName">Name</label>
+            <input type="text" class="form-control" name="eventName" placeholder="Name">
+        </div>
+        <button type="submit" class="btn btn-primary">Create</button>
+    }
+</div>

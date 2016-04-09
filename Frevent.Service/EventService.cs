@@ -9,7 +9,7 @@ namespace Frevent.Service
     {
         IEnumerable<Event> GetEvents();
         Event GetEvent(int id);
-        void CreateEvent(Event gadget);
+        void CreateEvent(Event anEvent);
         void SaveEvent();
     }
 
