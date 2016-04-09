@@ -9,6 +9,7 @@ namespace Frevent.Data.Configuration
         {
             ToTable("Events");
             Property(e => e.Name).IsRequired();
-        }     
+            HasOptional(e => e.Place).WithMany(p => p.Events);
+        }
     }
 }

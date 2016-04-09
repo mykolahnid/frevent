@@ -10,6 +10,7 @@ namespace Frevent.Data.Configuration
             ToTable("Places");
             Property(p => p.Name).IsRequired();
             Property(p => p.IsDeleted).IsRequired();
+            HasMany(p => p.Events);
         }
     }
 }

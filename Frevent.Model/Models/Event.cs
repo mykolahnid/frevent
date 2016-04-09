@@ -13,7 +13,7 @@ namespace Frevent.Model.Models
         public DateTime End { get; set; }
         public string Name { get; set; }
 
-        public int PlaceID { get; set; }
-        public Place Place { get; set; }
+        public int? PlaceID { get; set; }
+        public virtual Place Place { get; set; }
     }
 }
