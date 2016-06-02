@@ -49,6 +49,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configuration\Auth\AspNetRoleMap.cs" />
+    <Compile Include="Configuration\Auth\AspNetUserClaimMap.cs" />
+    <Compile Include="Configuration\Auth\AspNetUserLoginMap.cs" />
+    <Compile Include="Configuration\Auth\AspNetUserMap.cs" />
     <Compile Include="Configuration\EventConfiguration.cs" />
     <Compile Include="Configuration\PlaceConfiguration.cs" />
     <Compile Include="FreventEntities.cs" />
@@ -66,6 +70,10 @@
     <Compile Include="Migrations\201604090752436_PlaceOptionalInEvent.cs" />
     <Compile Include="Migrations\201604090752436_PlaceOptionalInEvent.Designer.cs">
       <DependentUpon>201604090752436_PlaceOptionalInEvent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606022037000_AspnetAuth.cs" />
+    <Compile Include="Migrations\201606022037000_AspnetAuth.Designer.cs">
+      <DependentUpon>201606022037000_AspnetAuth.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -88,6 +96,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201604090752436_PlaceOptionalInEvent.resx">
       <DependentUpon>201604090752436_PlaceOptionalInEvent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606022037000_AspnetAuth.resx">
+      <DependentUpon>201606022037000_AspnetAuth.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
