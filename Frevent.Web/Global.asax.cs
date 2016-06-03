@@ -16,9 +16,6 @@ namespace Frevent.Web
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-
-            // Autofac and Automapper configurations
-            Bootstrapper.Run();
         }
     }
 }

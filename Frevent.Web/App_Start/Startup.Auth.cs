@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Web.Mvc;
 using Frevent.Data.Infrastructure;
 using Frevent.Model.Models.Auth;
 using Frevent.Service.Auth;
@@ -16,7 +17,7 @@ namespace Frevent.Web
         // For more information on configuring authentication, please visit http://go.microsoft.com/fwlink/?LinkId=301864
         public void ConfigureAuth(IAppBuilder app)
         {
-            var dbFactory = new DbFactory();
+            var dbFactory = DependencyResolver.Current.GetService<IDbFactory>();
 
             // Configure the db context, user manager and signin manager to use a single instance per request
             app.CreatePerOwinContext(dbFactory.Init);
