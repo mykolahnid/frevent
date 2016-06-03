@@ -1,8 +1,7 @@
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity.ModelConfiguration;
 using Frevent.Model.Models.Auth;
 
-namespace TestAuthentication.Models.Mapping
+namespace Frevent.Data.Configuration.Auth
 {
     public class AspNetUserConfiguration : EntityTypeConfiguration<AspNetUser>
     {

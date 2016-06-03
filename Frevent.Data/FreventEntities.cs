@@ -3,11 +3,11 @@ using Frevent.Data.Configuration;
 using Frevent.Data.Configuration.Auth;
 using Frevent.Model.Models;
 using Frevent.Model.Models.Auth;
-using TestAuthentication.Models.Mapping;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace Frevent.Data
 {
-    public class FreventEntities : DbContext
+    public class FreventEntities : IdentityDbContext<ApplicationUser>
     {
         public FreventEntities() : base("StoreEntities")
         {
