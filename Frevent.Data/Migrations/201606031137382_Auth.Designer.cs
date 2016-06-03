@@ -7,13 +7,13 @@ namespace Frevent.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class AspnetAuth : IMigrationMetadata
+    public sealed partial class Auth : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AspnetAuth));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Auth));
         
         string IMigrationMetadata.Id
         {
-            get { return "201606022037000_AspnetAuth"; }
+            get { return "201606031137382_Auth"; }
         }
         
         string IMigrationMetadata.Source

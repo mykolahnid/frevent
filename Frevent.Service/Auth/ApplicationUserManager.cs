@@ -12,18 +12,18 @@ using Microsoft.Owin;
 
 namespace Frevent.Service.Auth
 {
-    public class ApplicationUserManager : UserManager<ApplicationUser>
+    public class AspNetUserManager : UserManager<AspNetUser>
     {
-        public ApplicationUserManager(IUserStore<ApplicationUser> store)
+        public AspNetUserManager(IUserStore<AspNetUser> store)
             : base(store)
         {
         }
 
-        public static ApplicationUserManager Create(IdentityFactoryOptions<ApplicationUserManager> options, IOwinContext context)
+        public static AspNetUserManager Create(IdentityFactoryOptions<AspNetUserManager> options, IOwinContext context)
         {
-            var manager = new ApplicationUserManager(new UserStore<ApplicationUser>(context.Get<FreventEntities>()));
+            var manager = new AspNetUserManager(new UserStore<AspNetUser>(context.Get<FreventEntities>()));
             // Configure validation logic for usernames
-            manager.UserValidator = new UserValidator<ApplicationUser>(manager)
+            manager.UserValidator = new UserValidator<AspNetUser>(manager)
             {
                 AllowOnlyAlphanumericUserNames = false,
                 RequireUniqueEmail = true
@@ -46,11 +46,11 @@ namespace Frevent.Service.Auth
 
             // Register two factor authentication providers. This application uses Phone and Emails as a step of receiving a code for verifying the user
             // You can write your own provider and plug it in here.
-            manager.RegisterTwoFactorProvider("Phone Code", new PhoneNumberTokenProvider<ApplicationUser>
+            manager.RegisterTwoFactorProvider("Phone Code", new PhoneNumberTokenProvider<AspNetUser>
             {
                 MessageFormat = "Your security code is {0}"
             });
-            manager.RegisterTwoFactorProvider("Email Code", new EmailTokenProvider<ApplicationUser>
+            manager.RegisterTwoFactorProvider("Email Code", new EmailTokenProvider<AspNetUser>
             {
                 Subject = "Security Code",
                 BodyFormat = "Your security code is {0}"
@@ -61,7 +61,7 @@ namespace Frevent.Service.Auth
             if (dataProtectionProvider != null)
             {
                 manager.UserTokenProvider =
-                    new DataProtectorTokenProvider<ApplicationUser>(dataProtectionProvider.Create("ASP.NET Identity"));
+                    new DataProtectorTokenProvider<AspNetUser>(dataProtectionProvider.Create("ASP.NET Identity"));
             }
             return manager;
         }
