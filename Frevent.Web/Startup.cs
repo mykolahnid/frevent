@@ -1,10 +1,8 @@
-﻿using System.Net;
-using System.Reflection;
+﻿using System.Reflection;
 using System.Web;
 using System.Web.Mvc;
 using Autofac;
 using Autofac.Integration.Mvc;
-using Frevent.Data;
 using Frevent.Data.Infrastructure;
 using Frevent.Data.Repositories;
 using Frevent.Model.Models.Auth;

@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Web.Mvc;
-using Frevent.Data.Infrastructure;
 using Frevent.Model.Models.Auth;
 using Frevent.Service.Auth;
 using Microsoft.AspNet.Identity;
@@ -17,13 +15,6 @@ namespace Frevent.Web
         // For more information on configuring authentication, please visit http://go.microsoft.com/fwlink/?LinkId=301864
         public void ConfigureAuth(IAppBuilder app)
         {
-            //var dbFactory = DependencyResolver.Current.GetService<IDbFactory>();
-
-            // Configure the db context, user manager and signin manager to use a single instance per request
-            //app.CreatePerOwinContext(dbFactory.Init);
-            //app.CreatePerOwinContext<ApplicationUserManager>(ApplicationUserManager.Create);
-            //app.CreatePerOwinContext<ApplicationSignInManager>(ApplicationSignInManager.Create);
-
             // Enable the application to use a cookie to store information for the signed in user
             // and to use a cookie to temporarily store information about a user logging in with a third party login provider
             // Configure the sign in cookie
