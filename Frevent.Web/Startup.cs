@@ -1,12 +1,20 @@
-﻿using System.Reflection;
+﻿using System.Net;
+using System.Reflection;
+using System.Web;
 using System.Web.Mvc;
 using Autofac;
 using Autofac.Integration.Mvc;
+using Frevent.Data;
 using Frevent.Data.Infrastructure;
 using Frevent.Data.Repositories;
+using Frevent.Model.Models.Auth;
 using Frevent.Service;
+using Frevent.Service.Auth;
 using Frevent.Web.App_Start;
+using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
+using Microsoft.Owin.Security;
 using Owin;
 
 [assembly: OwinStartup(typeof(Frevent.Web.Startup))]
@@ -20,6 +28,16 @@ namespace Frevent.Web
             builder.RegisterControllers(Assembly.GetExecutingAssembly());
             builder.RegisterType<UnitOfWork>().As<IUnitOfWork>().InstancePerRequest();
             builder.RegisterType<DbFactory>().As<IDbFactory>().InstancePerRequest();
+
+            // Authentication            
+            builder.Register(c => HttpContext.Current.GetOwinContext().Authentication).As<IAuthenticationManager>();
+            builder.Register(c => new UserStore<ApplicationUser>(c.Resolve<IDbFactory>().Init())).AsImplementedInterfaces().InstancePerRequest();
+            builder.Register(c => new IdentityFactoryOptions<ApplicationUserManager>
+            {
+                DataProtectionProvider = new Microsoft.Owin.Security.DataProtection.DpapiDataProtectionProvider("Frevent")
+            });
+            builder.RegisterType<ApplicationUserManager>();
+            builder.RegisterType<ApplicationSignInManager>().AsSelf().InstancePerRequest();
 
             // Repositories
             builder.RegisterAssemblyTypes(typeof (EventRepository).Assembly)

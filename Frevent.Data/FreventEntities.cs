@@ -6,14 +6,14 @@ using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace Frevent.Data
 {
-    public class FreventEntities : IdentityDbContext<AspNetUser>
+    public class FreventEntities : IdentityDbContext<ApplicationUser>
     {
         public FreventEntities() : base("StoreEntities")
         {
         }
 
         public DbSet<Event> Events { get; set; }
-        public DbSet<Place> Places { get; set; }        
+        public DbSet<Place> Places { get; set; }
 
         public virtual void Commit()
         {
@@ -27,7 +27,7 @@ namespace Frevent.Data
             modelBuilder.Entity<IdentityUserRole>().HasKey(r => new { r.RoleId, r.UserId });
 
             modelBuilder.Configurations.Add(new EventConfiguration());
-            modelBuilder.Configurations.Add(new PlaceConfiguration());            
+            modelBuilder.Configurations.Add(new PlaceConfiguration());
         }
     }
 }
