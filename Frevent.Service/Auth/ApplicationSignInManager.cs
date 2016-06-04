@@ -13,19 +13,19 @@ namespace Frevent.Service.Auth
 {
     public class ApplicationSignInManager : SignInManager<AspNetUser, string>
     {
-        public ApplicationSignInManager(AspNetUserManager userManager, IAuthenticationManager authenticationManager)
+        public ApplicationSignInManager(ApplicationUserManager userManager, IAuthenticationManager authenticationManager)
             : base(userManager, authenticationManager)
         {
         }
 
         public override Task<ClaimsIdentity> CreateUserIdentityAsync(AspNetUser user)
         {
-            return user.GenerateUserIdentityAsync((AspNetUserManager)UserManager);
+            return user.GenerateUserIdentityAsync((ApplicationUserManager)UserManager);
         }
 
         public static ApplicationSignInManager Create(IdentityFactoryOptions<ApplicationSignInManager> options, IOwinContext context)
         {
-            return new ApplicationSignInManager(context.GetUserManager<AspNetUserManager>(), context.Authentication);
+            return new ApplicationSignInManager(context.GetUserManager<ApplicationUserManager>(), context.Authentication);
         }
     }
 }

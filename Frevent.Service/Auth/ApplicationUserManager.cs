@@ -12,16 +12,16 @@ using Microsoft.Owin;
 
 namespace Frevent.Service.Auth
 {
-    public class AspNetUserManager : UserManager<AspNetUser>
+    public class ApplicationUserManager : UserManager<AspNetUser>
     {
-        public AspNetUserManager(IUserStore<AspNetUser> store)
+        public ApplicationUserManager(IUserStore<AspNetUser> store)
             : base(store)
         {
         }
 
-        public static AspNetUserManager Create(IdentityFactoryOptions<AspNetUserManager> options, IOwinContext context)
+        public static ApplicationUserManager Create(IdentityFactoryOptions<ApplicationUserManager> options, IOwinContext context)
         {
-            var manager = new AspNetUserManager(new UserStore<AspNetUser>(context.Get<FreventEntities>()));
+            var manager = new ApplicationUserManager(new UserStore<AspNetUser>(context.Get<FreventEntities>()));
             // Configure validation logic for usernames
             manager.UserValidator = new UserValidator<AspNetUser>(manager)
             {
