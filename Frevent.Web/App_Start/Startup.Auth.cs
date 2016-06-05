@@ -51,9 +51,9 @@ namespace Frevent.Web
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
+            app.UseFacebookAuthentication(
+               appId: "618715068294297",
+               appSecret: "42e81a3ace0bcb13fe847b1d2686690f");
 
             app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             {
